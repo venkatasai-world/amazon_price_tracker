@@ -1,29 +1,36 @@
-<h1>Amazon Price Tracker<h1/><br>
+Amazon Price Tracker
 <img src="result/Screenshot 2025-12-04 234048.png" width="350" />
 
 Users enter the Amazon product URL, the target price, and their email.
 The data is saved in JSON.
-Every 15 minutes the system checks the product price.
-If the price is below or equal to the user’s price, an email is sent, and the item is removed from JSON.
+Every 15 minutes, the system automatically checks the product price.
+If the price is below or equal to the user’s entered price, an email is sent and the item is removed from the JSON file.
 
-<img src="IMAGE_LINK_HERE" width="350" />
 What It Does
 
-User enters URL
+User enters Amazon product URL
 
-User enters price
+User enters target price
 
-Auto check every 15 minutes
+System checks price every 15 minutes
 
-Sends email when price drops
+Sends email when the price drops
 
-Removes entry from JSON after email
+Removes entry from the JSON file after sending the email
 
 <img src="result/Screenshot 2025-12-04 234151.png" width="350" />
-JSON
+JSON Usage
 
-Stores: URL, target price, email, ID.
+The JSON file stores:
+
+URL
+
+Target Price
 
 Email
 
-Sent when the product price becomes lower than the user’s entered price.
+ID
+
+Email Notification
+
+An email is sent automatically when the product price becomes lower than or equal to the target price entered by the user.
