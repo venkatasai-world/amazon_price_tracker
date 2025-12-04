@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amazon Price Tracker</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Montserrat", sans-serif;
+      background: linear-gradient(135deg, #d8c7ff, #c3e5ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 480px;
+      background: white;
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    }
+
+    h1 {
+      font-family: "Pacifico", cursive;
+      font-size: 32px;
+      text-align: center;
+      margin: 0;
+      color: #6c3aff;
+    }
+
+    p.tagline {
+      text-align: center;
+      margin: 4px 0 20px;
+      font-size: 14px;
+      color: #666;
+    }
+
+    label {
+      font-size: 14px;
+      margin-bottom: 6px;
+      display: block;
+      color: #333;
+      font-weight: 600;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid #bbb;
+      outline: none;
+      font-size: 15px;
+      margin-bottom: 14px;
+      background: #fafafa;
+      transition: 0.2s;
+    }
+
+    input:focus {
+      border-color: #7b50ff;
+      box-shadow: 0 0 6px rgba(123,80,255,0.4);
+      background: white;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      background: linear-gradient(90deg, #7b50ff, #5270ff);
+      border: none;
+      border-radius: 12px;
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(123,80,255,0.4);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Amazon Price Tracker</h1>
+    <p class="tagline">Track prices fast & get alerts instantly</p>
+
+    <form id="track-form">
+      <label>Amazon Product Link</label>
+      <input id="url" name="url" type="text" placeholder="https://www.amazon.in/..." required>
+
+      <label>Target Price</label>
+      <input id="target_price" name="target_price" type="number" placeholder="Enter your target price" required>
+
+      <label>Your Email</label>
+      <input id="email" name="email" type="email" placeholder="you@example.com" required>
+
+      <button type="submit">Set Price Alert</button>
+    </form>
+
+    <div id="status" style="margin-top:12px; font-size:14px; color:#333"></div>
+
+    <script>
+      const form = document.getElementById('track-form');
+      const status = document.getElementById('status');
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        status.textContent = 'Submitting tracker...';
+
+        const payload = {
+          url: document.getElementById('url').value.trim(),
+          target_price: document.getElementById('target_price').value.trim(),
+          email: document.getElementById('email').value.trim()
+        };
+
+        try {
+          const res = await fetch('/track', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          const data = await res.json();
+          if (res.ok && data.ok) {
+            status.style.color = 'green';
+            // Do not display internal tracker id to the user. Show friendly confirmation.
+            if (data.emailed) {
+              status.textContent = 'Tracker created — email sent immediately.';
+            } else {
+              status.textContent = 'Tracker created. You will receive an email when the price drops.';
+            }
+            form.reset();
+          } else {
+            status.style.color = 'crimson';
+            status.textContent = 'Error: ' + (data.error || 'Unknown error');
+          }
+        } catch (err) {
+          status.style.color = 'crimson';
+          status.textContent = 'Network error: ' + err.message;
+        }
+      });
+    </script>
+  </div>
+
+</body>
+</html>

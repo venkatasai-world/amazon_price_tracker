@@ -1,0 +1,6 @@
+Flask
+APScheduler
+selenium
+webdriver-manager
+python-dotenv
+gunicorn
