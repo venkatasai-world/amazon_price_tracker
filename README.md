@@ -1,5 +1,5 @@
 Amazon Price Tracker
-<img src="IMAGE_LINK_HERE" width="350" />
+<img src="result/Screenshot 2025-12-04 234048.png" width="350" />
 
 Users enter the Amazon product URL, the target price, and their email.
 The data is saved in JSON.
@@ -19,7 +19,7 @@ Sends email when price drops
 
 Removes entry from JSON after email
 
-<img src="IMAGE_LINK_HERE" width="350" />
+<img src="result/Screenshot 2025-12-04 234151.png" width="350" />
 JSON
 
 Stores: URL, target price, email, ID.
