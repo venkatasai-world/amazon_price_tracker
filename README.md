@@ -1,4 +1,4 @@
-Amazon Price Tracker
+<h1>Amazon Price Tracker<h1/><br>
 <img src="result/Screenshot 2025-12-04 234048.png" width="350" />
 
 Users enter the Amazon product URL, the target price, and their email.
