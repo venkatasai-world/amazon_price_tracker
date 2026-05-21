@@ -1,36 +1,75 @@
-<h1>Amazon Price Tracker<h1/>
-<img src="result/Screenshot 2025-12-04 234048.png" width="350" />
+# Amazon Price Tracker 🛒📉
 
-Users enter the Amazon product URL, the target price, and their email.
-The data is saved in JSON.
-Every 15 minutes, the system automatically checks the product price.
-If the price is below or equal to the user’s entered price, an email is sent and the item is removed from the JSON file.
+A smart and automated **Amazon Price Tracker** built to help users monitor product prices and receive email alerts when the price drops to their desired amount.
 
-What It Does
+## About the Project
 
-User enters Amazon product URL
+This application allows users to enter an **Amazon product URL**, set a **target price**, and provide their **email address**. The system automatically checks the product price every **15 minutes** and sends an email notification when the price becomes **lower than or equal to the target price**.
 
-User enters target price
+After the notification is sent, the tracked item is automatically removed from the JSON file to avoid duplicate alerts.
 
-System checks price every 15 minutes
+---
 
-Sends email when the price drops
+## Features
 
-Removes entry from the JSON file after sending the email
+- 🔗 **Track Amazon Product URLs**
+- 💰 **Set Your Target Price**
+- 📧 **Email Notification Alerts**
+- ⏰ **Automatic Price Checking Every 15 Minutes**
+- 💾 **JSON File Storage (No Database Needed)**
+- 🗑 **Auto-removes product after successful notification**
+- 📱 **Simple and user-friendly interface**
 
-<img src="result/Screenshot 2025-12-04 234151.png" width="350" />
-JSON Usage
+---
 
-The JSON file stores:
+## How It Works
 
-URL
+1. User enters the **Amazon product URL**
+2. User sets their **target price**
+3. User provides their **email address**
+4. System stores the data in a **JSON file**
+5. Every **15 minutes**, the system checks the latest product price
+6. If the product price is **less than or equal to the target price**:
+   - 📩 Email alert is sent
+   - 🗑 Entry is removed from JSON automatically
 
-Target Price
+---
 
-Email
+## JSON File Stores
 
-ID
+The JSON file keeps track of:
 
-Email Notification
+- **Product URL**
+- **Target Price**
+- **User Email**
+- **Unique ID**
 
-An email is sent automatically when the product price becomes lower than or equal to the target price entered by the user.
+---
+
+## Email Notification System
+
+When the tracked product reaches the desired price:
+
+- The system automatically sends an **email notification**
+- Alerts the user that the product is now available at the target price
+- Removes the product from tracking after sending the email
+
+---
+
+## Tech Stack
+
+- **Python / Flask** – Backend
+- **HTML** – Frontend structure
+- **CSS** – Styling
+- **JavaScript** – User interactions
+- **JSON** – Data storage
+- **Email Service (SMTP)** – Notifications
+- **Scheduler / Background Task** – Automatic price checking
+
+---
+
+## Purpose
+
+This project was created to help users avoid manually checking Amazon product prices repeatedly. It automates the process and ensures users get notified instantly when a product reaches their preferred price.
+
+> Track smart. Save money. Get notified instantly. 🚀
